@@ -1,0 +1,49 @@
+---
+
+AllCops:
+  Include:
+    - 'gemfiles/*'
+    - 'tasks/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/SpecialGlobalVars:
+  Enabled: false
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Copyright:
+  Enabled: true
+  Notice: '^# Copyright \(c\) 2\d{3} .+$'
+
+Style/Encoding:
+  Enabled: true
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/MultilineArrayBraceLayout:
+  Enabled: true
+
+Style/MultilineAssignmentLayout:
+  Enabled: true
+
+Style/OptionHash:
+  Enabled: true
+
+Style/Send:
+  Enabled: true
+
+Style/StringMethods:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Lint/LiteralInInterpolation:
+  Enabled: true

@@ -1,0 +1,16 @@
+--readme README.md
+--title PolyDelegate Documentation
+--charset utf-8
+
+--markup markdown
+--markup-provider kramdown
+--output-dir _yardoc
+
+--protected
+--private
+--default-return ''
+
+lib/**/*.rb
+-
+doc/*.md
+LICENSE.md
