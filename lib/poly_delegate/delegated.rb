@@ -29,16 +29,17 @@ module PolyDelegate
 
       def __create_delegated_method__(name)
         method = instance_method(name)
+        klass = self
 
         PolyDelegate.redefine_method(self, name) do |*args, &block|
-          __delegated_call__(method, *args, &block)
+          klass.__delegated_call__(self, method, *args, &block)
         end
       end
 
-      def __delegated_call__(method, *args, &block)
+      def __delegated_call__(obj, method, *args, &block)
         delegator =
           if args.empty? || !args.first.is_a?(Delegator)
-            self
+            obj
           else
             args.shift
           end
