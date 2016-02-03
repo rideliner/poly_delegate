@@ -6,5 +6,5 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 module PolyDelegate
-  VERSION = '1.0.0'.freeze
+  VERSION = '1.1.0'.freeze
 end
