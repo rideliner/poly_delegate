@@ -180,7 +180,7 @@
     <span class='id identifier rubyid_intercepted'>intercepted</span> <span class='op'>=</span> <span class='id identifier rubyid_intercepted'>intercepted</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:instance_methods</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_reduce'>reduce</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:-</span><span class='rparen'>)</span>
 
     <span class='id identifier rubyid_intercepted'>intercepted</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
-      <span class='id identifier rubyid___create_delegated_method__'>__create_delegated_method__</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+      <span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_create_delegated_method'>create_delegated_method</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -194,7 +194,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Feb  2 04:16:20 2016 by
+  Generated on Wed Feb  3 03:30:05 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.3.0).
 </div>
