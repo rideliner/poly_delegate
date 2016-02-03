@@ -5,8 +5,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-require 'force_bind' if RUBY_ENGINE == 'ruby'
-
 module PolyDelegate
   # rubocop:disable Lint/DuplicateMethods
   case RUBY_ENGINE
@@ -17,6 +15,8 @@ module PolyDelegate
       Method.new(bound_obj, *method_args)
     end
   when 'ruby'
+    require 'force_bind'
+
     def self.force_bind(bound_obj, method)
       if bound_obj.class == method.owner
         method.bind(bound_obj)
