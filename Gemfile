@@ -9,8 +9,6 @@ source 'https://rubygems.org'
 
 gemspec path: __dir__
 
-gem 'force_bind', require: false, platforms: :mri
-
 group :development do
   gem 'rake', require: false
 

@@ -7,6 +7,8 @@
 
 require 'poly_delegate/method'
 
+require 'force_bind'
+
 module PolyDelegate
   def self.distinguish_delegator(obj, *args)
     delegator =
@@ -21,7 +23,7 @@ module PolyDelegate
 
   def self.delegate_call(obj, method, *args, &block)
     delegator, args = distinguish_delegator(obj, *args)
-    bound = force_bind(delegator, method)
+    bound = method.force_bind(delegator)
     bound.call(*args, &block)
   end
 

@@ -7,7 +7,6 @@
 
 require 'poly_delegate/call'
 require 'poly_delegate/classic_access'
-require 'poly_delegate/force_bind'
 
 module PolyDelegate
   module Delegated
