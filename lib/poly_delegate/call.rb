@@ -7,7 +7,14 @@
 
 require 'poly_delegate/method'
 
-require 'force_bind'
+case RUBY_ENGINE
+when 'ruby'
+  require 'force_bind'
+when 'rbx'
+  require 'force_bind_rbx'
+else
+  fail "force binding is not supported on #{RUBY_ENGINE}"
+end
 
 module PolyDelegate
   def self.distinguish_delegator(obj, *args)
