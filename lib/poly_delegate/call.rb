@@ -6,15 +6,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 require 'poly_delegate/method'
-
-case RUBY_ENGINE
-when 'ruby'
-  require 'force_bind'
-when 'rbx'
-  require 'force_bind_rbx'
-else
-  fail "force binding is not supported on #{RUBY_ENGINE}"
-end
+require 'poly_delegate/force_bind'
 
 module PolyDelegate
   def self.distinguish_delegator(obj, *args)
