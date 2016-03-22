@@ -23,6 +23,8 @@ group :development do
   gem 'simplecov', require: false
 
   # doc
-  gem 'yard', require: false
+  gem 'yard', require: false,
+    git: 'https://github.com/lsegal/yard.git'
+  gem 'yard_rideliner', require: false
   gem 'kramdown', require: false
 end

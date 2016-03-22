@@ -10,6 +10,8 @@
 --private
 --default-return ''
 
+--plugin yard_rideliner
+
 lib/**/*.rb
 -
 doc/*.md

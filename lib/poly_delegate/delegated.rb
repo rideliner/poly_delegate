@@ -9,11 +9,21 @@ require 'poly_delegate/call'
 require 'poly_delegate/classic_access'
 
 module PolyDelegate
+  # A class that includes {Delegated} has all current and future methods
+  # redefined to allow for an extra {Delegator} parameter. If that {Delegator}
+  # argument is provided, the method call is redirected to that parameter in the
+  # same manner that inheritance will first go to a method definition in a child
+  # class.
   module Delegated
+    # @api private
+    # Define some class methods on anyone that includes this module.
+    # Also, make all methods already existing on the class self-delegating.
+    # @return [void]
     def self.included(base)
       base.extend(ClassMethods)
 
       base.class_eval do
+        # Don't make methods in the Ruby standard self-delegating.
         intercepted = [base, Object, Kernel, BasicObject]
         intercepted = intercepted.map(&:instance_methods).reduce(&:-)
 
@@ -23,11 +33,19 @@ module PolyDelegate
       end
     end
 
+    # @api private
+    # Class level methods that are needed on implementors of {Delegated}.
     module ClassMethods
       include ClassicAttributeAccess
 
+      # Redefine methods to be self-delegating.
+      # @return [void]
       def method_added(name)
         return if %i(method_missing initialize).include?(name)
+
+        # The nature of method_added getting called when a method is defined
+        # means that we have to prevent the redefinition made in
+        # create_delegated_method from getting any further here.
         return if PolyDelegate.callers(2).include?(:redefine_method)
 
         PolyDelegate.create_delegated_method(self, name)
