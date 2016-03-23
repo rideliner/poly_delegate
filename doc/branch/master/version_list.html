@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    
+      <link rel="stylesheet" href="css/full_list.css" type="text/css" media="screen" charset="utf-8" />
+    
+      <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+    
+
+    
+      <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    
+      <script type="text/javascript" charset="utf-8" src="js/full_list.js"></script>
+    
+
+    <title>Version List</title>
+    <base id="base_target" target="_parent" />
+  </head>
+  <body>
+    <div id="content">
+      <div class="fixed_header">
+        <h1 id="full_list_header">Version List</h1>
+        <div id="full_list_nav">
+          
+            <span><a target="_self" href="class_list.html">
+              Classes
+            </a></span>
+          
+            <span><a target="_self" href="method_list.html">
+              Methods
+            </a></span>
+          
+            <span><a target="_self" href="file_list.html">
+              Files
+            </a></span>
+          
+            <span><a target="_self" href="version_list.html">
+              Versions
+            </a></span>
+          
+        </div>
+
+        <div id="search">Search: <input type="text" /></div>
+      </div>
+
+      <ul id="full_list" class="version">
+        <script type="text/javascript">
+if (match = parent.window.location.pathname.match(/^(.+?)(?:branch|tag)\/[^\/]+\/(.+)/)) {
+  var project_root_url = match[1];
+  var relative_url = match[2];
+
+  var jsonData = $.getJSON(project_root_url + 'sitemap.json', function(json) {
+    var branches = json.branch ? Object.keys(json.branch) : [];
+    var tags = json.tag ? Object.keys(json.tag) : [];
+    var list = $('ul.version#full_list');
+
+    var createItem = function(version, index, type) {
+      var base_url = project_root_url + type + '/' + version + '/';
+      var url = base_url;
+      url += (window.location === parent.window.location ? index : relative_url);
+
+      list.append(
+        '<li><div class="item"><span class="object_link">' +
+        '<a href="' + url + '" title="' + version + ' (' + type + ')">' +
+        version + '</a> <small>' + type + '</small></span></div></li>');
+
+      $.ajax({
+        url: url,
+        statusCode: { 404: function() {
+          item = $('ul.version#full_list li').filter(function() {
+            return $(this).find('a').attr('href') === url;
+          });
+          // mark the version as deprecated (missing the current page)
+          // redirect to the index page found in sitemap.json
+          item.addClass('deprecated');
+          item.find('a').attr('href', base_url + index);
+        }}
+      });
+    }
+
+    for (var i = 0; i < branches.length; i++) {
+      createItem(branches[i], json.branch[branches[i]], 'branch');
+    }
+
+    for (var i = 0; i < tags.length; i++) {
+      createItem(tags[i], json.tag[tags[i]], 'tag');
+    }
+
+    highlight();
+    $(fullListSearch);
+    $(linkList);
+    $(collapse);
+  });
+}
+</script>
+
+      </ul>
+    </div>
+  </body>
+</html>
