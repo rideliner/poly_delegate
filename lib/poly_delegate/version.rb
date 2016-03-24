@@ -6,6 +6,6 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 module PolyDelegate
-  # :nodoc:
+  # Gem version number
   VERSION = '1.2.2'.freeze
 end
