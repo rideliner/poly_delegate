@@ -23,6 +23,9 @@ if ENV['TRAVIS'] && ENV['DOCS']
         elsif !branch.empty?
           t.register "branch/#{branch}"
         end
+
+        t.init_jekyll
+        t.json_sitemap(['./_yardoc'])
       end
     else
       task :deploy do
