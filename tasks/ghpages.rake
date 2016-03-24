@@ -19,9 +19,9 @@ if ENV['TRAVIS'] && ENV['DOCS']
         branch = ENV['TRAVIS_BRANCH']
 
         if !tag.empty?
-          t.register "doc/tag/#{tag}"
+          t.register "tag/#{tag}"
         elsif !branch.empty?
-          t.register "doc/branch/#{branch}"
+          t.register "branch/#{branch}"
         end
       end
     else
