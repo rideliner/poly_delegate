@@ -19,12 +19,9 @@ module PolyDelegate
   #   `instance_variable_set`, keep in mind that `__instance_variable_get__`
   #   and `__instance_variable_set__` will still maintain the original
   #   functionality of these methods.
+  # @api private
   module ClassicAttributeAccess
-    private
-
     # Define methods to access readable instance variables
-    # @api private
-    # @!scope class
     # @overload attr_reader(method_name, ...)
     #   @param method_name [Symbol, String] a readable attribute
     #   @param ... [Symbol, String] more readable attributes
@@ -38,8 +35,6 @@ module PolyDelegate
     end
 
     # Define methods to access writable instance variables
-    # @api private
-    # @!scope class
     # @overload attr_writer(method_name, ...)
     #   @param method_name [Symbol, String] a writable attribute
     #   @param ... [Symbol, String] more writable attributes
@@ -53,8 +48,6 @@ module PolyDelegate
     end
 
     # Define methods to access readable and writable instance variables
-    # @api private
-    # @!scope class
     # @overload attr_accessor(method_name, ...)
     #   @param method_name [Symbol, String] an accessible attribute
     #   @param ... [Symbol, String] more accessible attributes
