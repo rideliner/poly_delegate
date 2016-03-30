@@ -16,8 +16,8 @@ module PolyDelegate
   # class.
   module Delegated
     # @api private
-    # Define some class methods on anyone that includes this module.
-    # Also, make all methods already existing on the class self-delegating.
+    # Define some class methods on anyone that includes this module
+    # @note Makes all methods already existing on the class self-delegating.
     # @return [void]
     def self.included(base)
       base.extend(ClassMethods)
@@ -34,11 +34,11 @@ module PolyDelegate
     end
 
     # @api private
-    # Class level methods that are needed on implementors of {Delegated}.
+    # Class level methods that are needed in implementors of {Delegated}.
     module ClassMethods
       include ClassicAttributeAccess
 
-      # Redefine methods to be self-delegating.
+      # Redefine methods to be self-delegating
       # @return [void]
       def method_added(name)
         return if %i(method_missing initialize).include?(name)

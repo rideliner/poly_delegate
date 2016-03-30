@@ -8,7 +8,17 @@
 require 'yard'
 require 'yard/rake/yardoc_task'
 
+require 'yardstick/rake/measurement'
+require 'yardstick/rake/verify'
+
 YARD::Rake::YardocTask.new(:yard)
+
+Yardstick::Rake::Measurement.new('yard:measure') do |measurement|
+  measurement.output = '/dev/stdout'
+end
+
+Yardstick::Rake::Verify.new('yard:verify') do |verify|
+end
 
 CLEAN.include '.yardoc'
 CLOBBER.include '_yardoc'

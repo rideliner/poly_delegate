@@ -6,47 +6,117 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 module PolyDelegate
-  # @return [String] name of the calling method
+  # Get the name of the calling method
+  # @api public
+  # @return [String]
+  # @example
+  #   def foo
+  #     PolyDelegate.caller
+  #   end
+  #
+  #   def bar
+  #     foo
+  #   end
+  #
+  #   def baz
+  #     bar
+  #   end
+  #
+  #   baz #=> 'bar'
   def self.caller
     callers(2).last
   end
 
+  # Get a list of calling methods traced back
+  # @api public
   # @param num [Integer] number of calling methods to retrieve
-  # @return [Array<String>] list of calling methods traced back
+  # @return [Array<String>]
+  # @example
+  #   def foo
+  #     PolyDelegate.callers(2)
+  #   end
+  #
+  #   def bar
+  #     foo
+  #   end
+  #
+  #   def baz
+  #     bar
+  #   end
+  #
+  #   baz #=> ['bar', 'baz']
   def self.callers(num)
     caller_locations(2, num).map(&:label).map(&:to_sym)
   end
 
+  # Get the visibility of a method
+  # @api public
+  # @param mod [Module]
   # @param method [Symbol] method name
   # @return [:public, :private, :protected] visibility level of a method
-  def self.method_visibility(obj, method)
-    if obj.public_method_defined? method
+  # @example
+  #   class Foo
+  #     def bar; end
+  #     private :bar
+  #   end
+  #
+  #   PolyDelegate.method_visibility(Foo, :bar) #=> :private
+  def self.method_visibility(mod, method)
+    if mod.public_method_defined? method
       :public
-    elsif obj.private_method_defined? method
+    elsif mod.private_method_defined? method
       :private
-    elsif obj.protected_method_defined? method
+    elsif mod.protected_method_defined? method
       :protected
     end
   end
 
-  # Change the visibility of a method dynamically.
+  # Change the visibility of a method dynamically
+  # @api public
+  # @param mod [Module]
   # @param method [Symbol] method name
   # @param visibility [:public, :private, :protected]
   # @return [void]
-  def self.set_method_visibility(obj, method, visibility)
-    obj.__send__ visibility, method
+  # @example
+  #   class Foo
+  #     def bar; end
+  #   end
+  #
+  #   PolyDelegate.method_visibility(Foo, :bar) #=> :public
+  #
+  #   PolyDelegate.set_method_visibility(Foo, :bar, :private)
+  #
+  #   PolyDelegate.method_visibility(Foo, :bar) #=> :private
+  def self.set_method_visibility(mod, method, visibility)
+    mod.__send__ visibility, method
   end
 
-  # Redefine a method with a new implementation.
+  # Redefine a method with a new implementation
+  # @api public
   # @note Keeps the same level of visibility.
-  # @param obj [Object] object for the method to be redefined on
+  # @param mod [Module] object for the method to be redefined on
   # @param name [Symbol] name of method to redefine
   # @param block [Proc] new implementation of the method
   # @return [void]
-  def self.redefine_method(obj, name, &block)
-    visibility = method_visibility(obj, name)
-    obj.__send__(:undef_method, name)
-    obj.__send__(:define_method, name, &block)
-    set_method_visibility(obj, name, visibility)
+  # @example
+  #   class Foo
+  #     def bar(name)
+  #       "Hello, #{name}!"
+  #     end
+  #   end
+  #
+  #   f = Foo.new
+  #   f.bar('World') #=> 'Hello, World!
+  #
+  #   PolyDelegate.redefine_method(Foo, :bar) do |name|
+  #     "Goodbye, #{name}!"
+  #   end
+  #
+  #   f.bar('World') #=> 'Goodbye, World!'
+  def self.redefine_method(mod, name, &block)
+    visibility = method_visibility(mod, name)
+    mod.__send__(:undef_method, name)
+    mod.__send__(:define_method, name, &block)
+    set_method_visibility(mod, name, visibility)
   end
 end

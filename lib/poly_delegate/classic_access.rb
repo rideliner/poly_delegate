@@ -22,11 +22,13 @@ module PolyDelegate
   module ClassicAttributeAccess
     private
 
+    # Define methods to access readable instance variables
+    # @api private
     # @!scope class
     # @overload attr_reader(method_name, ...)
     #   @param method_name [Symbol, String] a readable attribute
     #   @param ... [Symbol, String] more readable attributes
-    #   @return [void]
+    # @return [void]
     def attr_reader(*methods)
       methods.each do |method|
         define_method(method) do
@@ -35,11 +37,13 @@ module PolyDelegate
       end
     end
 
+    # Define methods to access writable instance variables
+    # @api private
     # @!scope class
     # @overload attr_writer(method_name, ...)
     #   @param method_name [Symbol, String] a writable attribute
     #   @param ... [Symbol, String] more writable attributes
-    #   @return [void]
+    # @return [void]
     def attr_writer(*methods)
       methods.each do |method|
         define_method("#{method}=") do |value|
@@ -48,11 +52,13 @@ module PolyDelegate
       end
     end
 
+    # Define methods to access readable and writable instance variables
+    # @api private
     # @!scope class
     # @overload attr_accessor(method_name, ...)
     #   @param method_name [Symbol, String] an accessible attribute
     #   @param ... [Symbol, String] more accessible attributes
-    #   @return [void]
+    # @return [void]
     def attr_accessor(*methods)
       attr_reader(*methods)
       attr_writer(*methods)

@@ -10,7 +10,7 @@ require 'poly_delegate/force_bind'
 
 module PolyDelegate
   # @api private
-  # Distinguish the delegator from the arguments before calling a method.
+  # Distinguish the delegator from the arguments before calling a method
   # @overload distinguish_delegator(obj, args...)
   #   Treats `obj` as the delegator.
   #   @param obj [Delegated] delegated object
@@ -20,7 +20,7 @@ module PolyDelegate
   #   @param obj [Delegated] delegated object
   #   @param delegator [Delegator]
   #   @param args... [Array<Object>] arguments to the original method
-  #   @return [Array<Delegator, Object...>]
+  # @return [Array<Delegator, Object...>]
   def self.distinguish_delegator(obj, *args)
     delegator =
       if args.empty? || !args.first.is_a?(Delegator)
@@ -33,13 +33,13 @@ module PolyDelegate
   end
 
   # @api private
-  # Call a method in the context of the delegator.
+  # Call a method in the context of the delegator
   # @overload delegate_call(obj, method, args..., &block)
   #   @param obj [Delegated] delegated object
   #   @param method [UnboundMethod#force_bind] method to call on the delegator
   #   @param args... [Array<Object>] arguments to be passed to `method`
   #   @yield block to be passed to `method`
-  #   @return result of the method call
+  # @return result of the method call
   def self.delegate_call(obj, method, *args, &block)
     delegator, args = distinguish_delegator(obj, *args)
     bound = method.force_bind(delegator)
