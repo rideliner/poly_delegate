@@ -152,10 +152,10 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   <span class="note title private">private</span>
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Define methods to access readable and writable instance variables.</p>
 </div></span>
   
 </li>
@@ -175,10 +175,10 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   <span class="note title private">private</span>
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Define methods to access readable instance variables.</p>
 </div></span>
   
 </li>
@@ -198,10 +198,10 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   <span class="note title private">private</span>
   
   
-  
+  <span class="private note title">private</span>
 
   
-    <span class="summary_desc"><div class='inline'>
+    <span class="summary_desc"><div class='inline'><p>Define methods to access writable instance variables.</p>
 </div></span>
   
 </li>
@@ -227,7 +227,11 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p class="note returns_void">This method returns an undefined value.</p><p>Define methods to access readable and writable instance variables</p>
 
 
   </div>
@@ -236,7 +240,7 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
   <div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
+    
 
 
   </div>
@@ -287,13 +291,13 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
       <pre class="lines">
 
 
-56
-57
-58
-59</pre>
+62
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attr_accessor'>attr_accessor</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_attr_reader'>attr_reader</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
@@ -315,7 +319,11 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p class="note returns_void">This method returns an undefined value.</p><p>Define methods to access readable instance variables</p>
 
 
   </div>
@@ -324,7 +332,7 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
   <div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
+    
 
 
   </div>
@@ -375,16 +383,16 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
       <pre class="lines">
 
 
-30
-31
 32
 33
 34
 35
-36</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attr_reader'>attr_reader</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>
@@ -409,7 +417,11 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p class="note returns_void">This method returns an undefined value.</p><p>Define methods to access writable instance variables</p>
 
 
   </div>
@@ -418,7 +430,7 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
   
   <div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
+    
 
 
   </div>
@@ -469,16 +481,16 @@ using <code>instance_variable_get</code> and <code>instance_variable_set</code>.
       <pre class="lines">
 
 
-43
-44
-45
-46
 47
 48
-49</pre>
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/classic_access.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_attr_writer'>attr_writer</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_methods'>methods</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_methods'>methods</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_method'>method</span><span class='op'>|</span>

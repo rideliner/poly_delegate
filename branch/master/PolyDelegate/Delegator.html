@@ -142,7 +142,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#__undelegated_get__-instance_method" title="#__undelegated_get__ (instance method)">#<strong>__undelegated_get__</strong>(sym)  </a>
+      <a href="#__undelegated_get__-instance_method" title="#__undelegated_get__ (instance method)">#<strong>__undelegated_get__</strong>(sym)  &#x21d2; Object </a>
     
 
     
@@ -165,7 +165,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#__undelegated_set__-instance_method" title="#__undelegated_set__ (instance method)">#<strong>__undelegated_set__</strong>(sym, value)  &#x21d2; void </a>
+      <a href="#__undelegated_set__-instance_method" title="#__undelegated_set__ (instance method)">#<strong>__undelegated_set__</strong>(sym, value)  &#x21d2; Object </a>
     
 
     
@@ -204,7 +204,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 
   
-    <span class="summary_desc"><div class='inline'><p>A new instance of Delegator.</p>
+    <span class="summary_desc"><div class='inline'><p>Create a wrapper around a delegated object.</p>
 </div></span>
   
 </li>
@@ -213,7 +213,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#instance_variable_get-instance_method" title="#instance_variable_get (instance method)">#<strong>instance_variable_get</strong>(sym)  </a>
+      <a href="#instance_variable_get-instance_method" title="#instance_variable_get (instance method)">#<strong>instance_variable_get</strong>(sym)  &#x21d2; Object </a>
     
 
     
@@ -236,7 +236,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#instance_variable_set-instance_method" title="#instance_variable_set (instance method)">#<strong>instance_variable_set</strong>(sym, value)  &#x21d2; void </a>
+      <a href="#instance_variable_set-instance_method" title="#instance_variable_set (instance method)">#<strong>instance_variable_set</strong>(sym, value)  &#x21d2; Object </a>
     
 
     
@@ -259,7 +259,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#method_missing-instance_method" title="#method_missing (instance method)">#<strong>method_missing</strong>(name, *args, &amp;block)  </a>
+      <a href="#method_missing-instance_method" title="#method_missing (instance method)">#<strong>method_missing</strong>(name, *args) { ... } </a>
     
 
     
@@ -270,7 +270,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
   
   
-  
+  <span class="private note title">private</span>
 
   
     <span class="summary_desc"><div class='inline'><p>Relay methods to <code>@__delegated_object__</code> if they exist.</p>
@@ -296,7 +296,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns a new instance of Delegator</p>
+    <p>Create a wrapper around a delegated object</p>
 
 
   </div>
@@ -329,12 +329,12 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-20
-21
-22</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 20</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span>
   <span class='ivar'>@__delegated_object__</span> <span class='op'>=</span> <span class='id identifier rubyid_obj'>obj</span>
@@ -355,7 +355,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
     <div class="method_details first">
   <h3 class="signature first" id="method_missing-instance_method">
   
-    #<strong>method_missing</strong>(name, *args, &amp;block)  
+    #<strong>method_missing</strong>(name, *args) { ... } 
   
 
   
@@ -363,13 +363,103 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Relay methods to <code>@__delegated_object__</code> if they exist</p>
+    <p class="note private">
+  <strong>This method is part of a private API.</strong>
+  You should avoid using this method if possible, as it may be removed or be changed in the future.
+</p>
+<p>Relay methods to <code>@__delegated_object__</code> if they exist</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>method name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>args</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Object&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>arguments to method</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Yields:</p>
+<ul class="yield">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>to method call</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'><p>result of method call</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NoMethodError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>if the delegated object does not respond to
+the method being called</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -377,14 +467,14 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-25
-26
-27
-28
-29</pre>
+34
+35
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='kw'>super</span> <span class='kw'>unless</span> <span class='ivar'>@__delegated_object__</span><span class='period'>.</span><span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
@@ -406,7 +496,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <div class="method_details first">
   <h3 class="signature first" id="__undelegated_get__-instance_method">
   
-    #<strong>__undelegated_get__</strong>(sym)  
+    #<strong>__undelegated_get__</strong>(sym)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -414,13 +504,58 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get an instance variable without going through the delegated object.</p>
+    <p>Get an instance variable without going through the delegated object</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>sym</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NameError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>if the instance variable does not exist</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -428,12 +563,12 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-43
-44
-45</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid___undelegated_get__'>__undelegated_get__</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span>
   <span class='id identifier rubyid___instance_variable_get__'>__instance_variable_get__</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span>
@@ -446,7 +581,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <div class="method_details ">
   <h3 class="signature " id="__undelegated_set__-instance_method">
   
-    #<strong>__undelegated_set__</strong>(sym, value)  &#x21d2; <tt>void</tt> 
+    #<strong>__undelegated_set__</strong>(sym, value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -454,13 +589,56 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p><p>Set an instance variable without going through the delegated object.</p>
+    <p>Set an instance variable without going through the delegated object</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>sym</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>value</code></p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -468,12 +646,12 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-49
-50
-51</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid___undelegated_set__'>__undelegated_set__</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='id identifier rubyid___instance_variable_set__'>__instance_variable_set__</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
@@ -486,7 +664,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <div class="method_details ">
   <h3 class="signature " id="instance_variable_get-instance_method">
   
-    #<strong>instance_variable_get</strong>(sym)  
+    #<strong>instance_variable_get</strong>(sym)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -494,13 +672,58 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Get an instance variable through the delegated object.</p>
+    <p>Get an instance variable through the delegated object</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>sym</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>NameError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>if the instance variable does not exist</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -508,12 +731,12 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-32
-33
-34</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span>
   <span class='ivar'>@__delegated_object__</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='rparen'>)</span>
@@ -526,7 +749,7 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <div class="method_details ">
   <h3 class="signature " id="instance_variable_set-instance_method">
   
-    #<strong>instance_variable_set</strong>(sym, value)  &#x21d2; <tt>void</tt> 
+    #<strong>instance_variable_set</strong>(sym, value)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -534,13 +757,56 @@ in an inheritance structure. Any methods defined on a class inheriting from
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p><p>Set an instance variable through the delegated object.</p>
+    <p>Set an instance variable through the delegated object</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>sym</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>, <tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Object</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>value</code></p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -548,12 +814,12 @@ in an inheritance structure. Any methods defined on a class inheriting from
       <pre class="lines">
 
 
-38
-39
-40</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/delegator.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@__delegated_object__</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_set'>instance_variable_set</span><span class='lparen'>(</span><span class='id identifier rubyid_sym'>sym</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>

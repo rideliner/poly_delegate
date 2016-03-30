@@ -167,7 +167,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Name of the calling method.</p>
+    <span class="summary_desc"><div class='inline'><p>Get the name of the calling method.</p>
 </div></span>
   
 </li>
@@ -190,7 +190,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>List of calling methods traced back.</p>
+    <span class="summary_desc"><div class='inline'><p>Get a list of calling methods traced back.</p>
 </div></span>
   
 </li>
@@ -245,7 +245,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#distinguish_delegator-class_method" title="distinguish_delegator (class method)">.<strong>distinguish_delegator</strong>(obj, *args)  </a>
+      <a href="#distinguish_delegator-class_method" title="distinguish_delegator (class method)">.<strong>distinguish_delegator</strong>(obj, *args)  &#x21d2; Array&lt;Delegator, Object...&gt; </a>
     
 
     
@@ -268,7 +268,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#method_visibility-class_method" title="method_visibility (class method)">.<strong>method_visibility</strong>(obj, method)  &#x21d2; :public, ... </a>
+      <a href="#method_visibility-class_method" title="method_visibility (class method)">.<strong>method_visibility</strong>(mod, method)  &#x21d2; :public, ... </a>
     
 
     
@@ -282,7 +282,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Visibility level of a method.</p>
+    <span class="summary_desc"><div class='inline'><p>Get the visibility of a method.</p>
 </div></span>
   
 </li>
@@ -291,7 +291,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#redefine_method-class_method" title="redefine_method (class method)">.<strong>redefine_method</strong>(obj, name, &amp;block)  &#x21d2; void </a>
+      <a href="#redefine_method-class_method" title="redefine_method (class method)">.<strong>redefine_method</strong>(mod, name, &amp;block)  &#x21d2; void </a>
     
 
     
@@ -314,7 +314,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#set_method_visibility-class_method" title="set_method_visibility (class method)">.<strong>set_method_visibility</strong>(obj, method, visibility)  &#x21d2; void </a>
+      <a href="#set_method_visibility-class_method" title="set_method_visibility (class method)">.<strong>set_method_visibility</strong>(mod, method, visibility)  &#x21d2; void </a>
     
 
     
@@ -354,13 +354,33 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns name of the calling method</p>
+    <p>Get the name of the calling method</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>def</span> <span class='id identifier rubyid_foo'>foo</span>
+  <span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_caller'>caller</span>
+<span class='kw'>end</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bar'>bar</span>
+  <span class='id identifier rubyid_foo'>foo</span>
+<span class='kw'>end</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_baz'>baz</span>
+  <span class='id identifier rubyid_bar'>bar</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_baz'>baz</span> <span class='comment'>#=&gt; &#39;bar&#39;</span></code></pre>
+    
+  </div>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -370,10 +390,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
         <span class='type'>(<tt>String</tt>)</span>
       
       
-      
-        &mdash;
-        <div class='inline'><p>name of the calling method</p>
-</div>
       
     </li>
   
@@ -385,12 +401,12 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <pre class="lines">
 
 
-10
-11
-12</pre>
+26
+27
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_caller'>caller</span>
   <span class='id identifier rubyid_callers'>callers</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -411,13 +427,33 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns list of calling methods traced back</p>
+    <p>Get a list of calling methods traced back</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>def</span> <span class='id identifier rubyid_foo'>foo</span>
+  <span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_callers'>callers</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_bar'>bar</span>
+  <span class='id identifier rubyid_foo'>foo</span>
+<span class='kw'>end</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_baz'>baz</span>
+  <span class='id identifier rubyid_bar'>bar</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_baz'>baz</span> <span class='comment'>#=&gt; [&#39;bar&#39;, &#39;baz&#39;]</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
@@ -447,10 +483,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       
       
       
-        &mdash;
-        <div class='inline'><p>list of calling methods traced back</p>
-</div>
-      
     </li>
   
 </ul>
@@ -461,12 +493,12 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <pre class="lines">
 
 
-16
-17
-18</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_callers'>callers</span><span class='lparen'>(</span><span class='id identifier rubyid_num'>num</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_caller_locations'>caller_locations</span><span class='lparen'>(</span><span class='int'>2</span><span class='comma'>,</span> <span class='id identifier rubyid_num'>num</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:label</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:to_sym</span><span class='rparen'>)</span>
@@ -573,7 +605,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
-<p>Call a method in the context of the delegator.</p>
+<p>Call a method in the context of the delegator</p>
 
 
   </div>
@@ -582,7 +614,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
   <div class="docstring">
   <div class="discussion">
-    <p>Returns result of the method call</p>
+    
 
 
   </div>
@@ -655,6 +687,9 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
     </li>
   
 </ul>
+
+</div>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -672,9 +707,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
     </li>
   
 </ul>
-
-</div>
-
 
 </div><table class="source_code">
   <tr>
@@ -720,7 +752,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   <strong>This method is part of a private API.</strong>
   You should avoid using this method if possible, as it may be removed or be changed in the future.
 </p>
-<p>Distinguish the delegator from the arguments before calling a method.</p>
+<p>Distinguish the delegator from the arguments before calling a method</p>
 
 
   </div>
@@ -850,6 +882,12 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 </ul>
 
+
+</div>
+      </li>
+    
+  </ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -863,12 +901,6 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
     </li>
   
 </ul>
-
-</div>
-      </li>
-    
-  </ul>
-
 
 </div><table class="source_code">
   <tr>
@@ -908,7 +940,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <div class="method_details ">
   <h3 class="signature " id="method_visibility-class_method">
   
-    .<strong>method_visibility</strong>(obj, method)  &#x21d2; <tt>:public</tt>, ... 
+    .<strong>method_visibility</strong>(mod, method)  &#x21d2; <tt>:public</tt>, ... 
   
 
   
@@ -916,14 +948,38 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns visibility level of a method</p>
+    <p>Get the visibility of a method</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_bar'>bar</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+  <span class='id identifier rubyid_private'>private</span> <span class='symbol'>:bar</span>
+<span class='kw'>end</span>
+
+<span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='const'>Foo</span><span class='comma'>,</span> <span class='symbol'>:bar</span><span class='rparen'>)</span> <span class='comment'>#=&gt; :private</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
+  
+    <li>
+      
+        <span class='name'>mod</span>
+      
+      
+        <span class='type'>(<tt>Module</tt>)</span>
+      
+      
+      
+    </li>
   
     <li>
       
@@ -966,25 +1022,25 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <pre class="lines">
 
 
-22
-23
-24
-25
-26
-27
-28
-29
-30</pre>
+64
+65
+66
+67
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 64</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_public_method_defined?'>public_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_public_method_defined?'>public_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
     <span class='symbol'>:public</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_private_method_defined?'>private_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_private_method_defined?'>private_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
     <span class='symbol'>:private</span>
-  <span class='kw'>elsif</span> <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid_protected_method_defined?'>protected_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
+  <span class='kw'>elsif</span> <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid_protected_method_defined?'>protected_method_defined?</span> <span class='id identifier rubyid_method'>method</span>
     <span class='symbol'>:protected</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
@@ -996,7 +1052,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <div class="method_details ">
   <h3 class="signature " id="redefine_method-class_method">
   
-    .<strong>redefine_method</strong>(obj, name, &amp;block)  &#x21d2; <tt>void</tt> 
+    .<strong>redefine_method</strong>(mod, name, &amp;block)  &#x21d2; <tt>void</tt> 
   
 
   
@@ -1011,21 +1067,42 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
 </div>
   </div>
 
-<p class="note returns_void">This method returns an undefined value.</p><p>Redefine a method with a new implementation.</p>
+<p class="note returns_void">This method returns an undefined value.</p><p>Redefine a method with a new implementation</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_bar'>bar</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_f'>f</span> <span class='op'>=</span> <span class='const'>Foo</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_bar'>bar</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>World</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &#39;Hello, World!
+</span>
+<span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_redefine_method'>redefine_method</span><span class='lparen'>(</span><span class='const'>Foo</span><span class='comma'>,</span> <span class='symbol'>:bar</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_name'>name</span><span class='op'>|</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Goodbye, </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_name'>name</span><span class='embexpr_end'>}</span><span class='tstring_content'>!</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_bar'>bar</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>World</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='comment'>#=&gt; &#39;Goodbye, World!&#39;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
   
     <li>
       
-        <span class='name'>obj</span>
+        <span class='name'>mod</span>
       
       
-        <span class='type'>(<tt>Object</tt>)</span>
+        <span class='type'>(<tt>Module</tt>)</span>
       
       
       
@@ -1074,21 +1151,21 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
-51</pre>
+116
+117
+118
+119
+120
+121</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 116</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_redefine_method'>redefine_method</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_visibility'>visibility</span> <span class='op'>=</span> <span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:undef_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_redefine_method'>redefine_method</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_visibility'>visibility</span> <span class='op'>=</span> <span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:undef_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1098,7 +1175,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <div class="method_details ">
   <h3 class="signature " id="set_method_visibility-class_method">
   
-    .<strong>set_method_visibility</strong>(obj, method, visibility)  &#x21d2; <tt>void</tt> 
+    .<strong>set_method_visibility</strong>(mod, method, visibility)  &#x21d2; <tt>void</tt> 
   
 
   
@@ -1106,14 +1183,41 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p><p>Change the visibility of a method dynamically.</p>
+    <p class="note returns_void">This method returns an undefined value.</p><p>Change the visibility of a method dynamically</p>
 
 
   </div>
 </div>
 <div class="tags">
-  <p class="tag_title">Parameters:</p>
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='kw'>class</span> <span class='const'>Foo</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_bar'>bar</span><span class='semicolon'>;</span> <span class='kw'>end</span>
+<span class='kw'>end</span>
+
+<span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='const'>Foo</span><span class='comma'>,</span> <span class='symbol'>:bar</span><span class='rparen'>)</span> <span class='comment'>#=&gt; :public
+</span>
+<span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='const'>Foo</span><span class='comma'>,</span> <span class='symbol'>:bar</span><span class='comma'>,</span> <span class='symbol'>:private</span><span class='rparen'>)</span>
+
+<span class='const'>PolyDelegate</span><span class='period'>.</span><span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='const'>Foo</span><span class='comma'>,</span> <span class='symbol'>:bar</span><span class='rparen'>)</span> <span class='comment'>#=&gt; :private</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
 <ul class="param">
+  
+    <li>
+      
+        <span class='name'>mod</span>
+      
+      
+        <span class='type'>(<tt>Module</tt>)</span>
+      
+      
+      
+    </li>
   
     <li>
       
@@ -1150,15 +1254,15 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
       <pre class="lines">
 
 
-36
-37
-38</pre>
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 90</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_obj'>obj</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='comma'>,</span> <span class='id identifier rubyid_method'>method</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
