@@ -25,7 +25,8 @@ group :development do
   # doc
   gem 'yard', require: false,
     git: 'https://github.com/lsegal/yard.git'
-  gem 'yardstick', require: false
+  gem 'yardstick', require: false,
+    git: 'https://github.com/dkubb/yardstick.git'
   gem 'yard_rideliner', require: false
   gem 'kramdown', require: false
 end
