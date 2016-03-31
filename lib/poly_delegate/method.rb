@@ -115,8 +115,12 @@ module PolyDelegate
   #   f.bar('World') #=> 'Goodbye, World!'
   def self.redefine_method(mod, name, &block)
     visibility = method_visibility(mod, name)
-    mod.__send__(:undef_method, name)
+
+    # Use remove_method instead of undef_method. The difference is minor,
+    # but remove_method doesn't replace the method with a fake method.
+    mod.__send__(:remove_method, name)
     mod.__send__(:define_method, name, &block)
+
     set_method_visibility(mod, name, visibility)
   end
 end
