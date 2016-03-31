@@ -1156,15 +1156,23 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.</p>
 118
 119
 120
-121</pre>
+121
+122
+123
+124
+125</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/poly_delegate/method.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_redefine_method'>redefine_method</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_visibility'>visibility</span> <span class='op'>=</span> <span class='id identifier rubyid_method_visibility'>method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:undef_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+
+  <span class='comment'># Use remove_method instead of undef_method. The difference is minor,
+</span>  <span class='comment'># but remove_method doesn&#39;t replace the method with a fake method.
+</span>  <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:remove_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_mod'>mod</span><span class='period'>.</span><span class='id identifier rubyid___send__'>__send__</span><span class='lparen'>(</span><span class='symbol'>:define_method</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_set_method_visibility'>set_method_visibility</span><span class='lparen'>(</span><span class='id identifier rubyid_mod'>mod</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_visibility'>visibility</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
