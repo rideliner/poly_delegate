@@ -1,3 +1,4 @@
 ---
 
-inherit_gem: rideliner
+inherit_gem:
+  rideliner: .rubocop.yml

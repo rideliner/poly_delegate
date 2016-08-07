@@ -32,9 +32,18 @@ module PolyDelegate
     # @yield to method call
     # @return result of method call
     def method_missing(name, *args, &block)
-      super unless @__delegated_object__.respond_to?(name)
+      super unless respond_to_missing?(name)
       # Send self as the delegator
       @__delegated_object__.__send__(name, self, *args, &block)
+    end
+
+    # Check if the delegated object responds to a method
+    # @api private
+    # @param name [Symbol] method name
+    # @param include_private [Boolean] also search through private methods
+    # @return [Boolean]
+    def respond_to_missing?(name, include_private = false)
+      @__delegated_object__.respond_to?(name, include_private)
     end
 
     # Get an instance variable through the delegated object
