@@ -1,4 +1,3 @@
-# encoding: utf-8
 # Copyright (c) 2016 Nathan Currier
 
 # This Source Code Form is subject to the terms of the Mozilla Public
