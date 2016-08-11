@@ -15,7 +15,7 @@ begin
 # ensure because we could run into a LoadError and need to give more info
 ensure
   unless UnboundMethod.method_defined?(:force_bind)
-    raise <<-EOF
+    raise NotImplementedError, <<-EOF
       UnboundMethod#force_bind is not defined.
 
       Implement UnboundMethod#force_bind or install a gem that implements it
